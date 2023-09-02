@@ -36,6 +36,7 @@ namespace Mango.Services.CouponAPI.Controllers
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
             }
+
             return _response;
         }
 
@@ -53,6 +54,7 @@ namespace Mango.Services.CouponAPI.Controllers
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
             }
+
             return _response;
         }
 
@@ -70,6 +72,7 @@ namespace Mango.Services.CouponAPI.Controllers
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
             }
+
             return _response;
         }
 
@@ -90,6 +93,7 @@ namespace Mango.Services.CouponAPI.Controllers
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
             }
+
             return _response;
         }
 
@@ -111,6 +115,7 @@ namespace Mango.Services.CouponAPI.Controllers
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
             }
+
             return _response;
         }
 
@@ -130,6 +135,7 @@ namespace Mango.Services.CouponAPI.Controllers
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
             }
+
             return _response;
         }
     }

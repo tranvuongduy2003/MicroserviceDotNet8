@@ -16,7 +16,7 @@ namespace Mango.Services.AuthAPI.Service
         public AuthService(AppDbContext db, IJwtTokenGenerator jwtTokenGenerator,
             UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-                _db = db;
+            _db = db;
             _jwtTokenGenerator = jwtTokenGenerator;
             _userManager = userManager;
             _roleManager = roleManager;
@@ -32,22 +32,24 @@ namespace Mango.Services.AuthAPI.Service
                     //create role if it does not exist
                     _roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
                 }
+
                 await _userManager.AddToRoleAsync(user, roleName);
                 return true;
             }
-            return false;
 
+            return false;
         }
 
         public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
         {
-            var user = _db.ApplicationUsers.FirstOrDefault(u => u.UserName.ToLower() == loginRequestDto.UserName.ToLower());
+            var user = _db.ApplicationUsers.FirstOrDefault(u =>
+                u.UserName.ToLower() == loginRequestDto.UserName.ToLower());
 
-            bool isValid = await _userManager.CheckPasswordAsync(user,loginRequestDto.Password);
+            bool isValid = await _userManager.CheckPasswordAsync(user, loginRequestDto.Password);
 
-            if(user==null || isValid == false)
+            if (user == null || isValid == false)
             {
-                return new LoginResponseDto() { User = null,Token="" };
+                return new LoginResponseDto() { User = null, Token = "" };
             }
 
             //if user was found , Generate JWT Token
@@ -84,7 +86,7 @@ namespace Mango.Services.AuthAPI.Service
 
             try
             {
-                var result =await  _userManager.CreateAsync(user,registrationRequestDto.Password);
+                var result = await _userManager.CreateAsync(user, registrationRequestDto.Password);
                 if (result.Succeeded)
                 {
                     var userToReturn = _db.ApplicationUsers.First(u => u.UserName == registrationRequestDto.Email);
@@ -98,18 +100,16 @@ namespace Mango.Services.AuthAPI.Service
                     };
 
                     return "";
-
                 }
                 else
                 {
                     return result.Errors.FirstOrDefault().Description;
                 }
-
             }
             catch (Exception ex)
             {
-
             }
+
             return "Error Encountered";
         }
     }

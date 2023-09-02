@@ -36,12 +36,13 @@ builder.Services.AddSwaggerGen(option =>
         {
             new OpenApiSecurityScheme
             {
-                Reference= new OpenApiReference
+                Reference = new OpenApiReference
                 {
-                    Type=ReferenceType.SecurityScheme,
-                    Id=JwtBearerDefaults.AuthenticationScheme
+                    Type = ReferenceType.SecurityScheme,
+                    Id = JwtBearerDefaults.AuthenticationScheme
                 }
-            }, new string[]{}
+            },
+            new string[] { }
         }
     });
 });

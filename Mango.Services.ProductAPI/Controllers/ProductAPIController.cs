@@ -39,6 +39,7 @@ namespace Mango.Services.ProductAPI.Controllers
                 _responseDto.IsSuccess = false;
                 _responseDto.Message = ex.Message;
             }
+
             return _responseDto;
         }
 
@@ -55,9 +56,10 @@ namespace Mango.Services.ProductAPI.Controllers
                 _responseDto.IsSuccess = false;
                 _responseDto.Message = ex.Message;
             }
+
             return _responseDto;
         }
-        
+
         [HttpGet]
         [Route("{id:int}")]
         public ResponseDto Get(int id)
@@ -72,6 +74,7 @@ namespace Mango.Services.ProductAPI.Controllers
                 _responseDto.IsSuccess = false;
                 _responseDto.Message = ex.Message;
             }
+
             return _responseDto;
         }
 
@@ -92,9 +95,10 @@ namespace Mango.Services.ProductAPI.Controllers
                 _responseDto.IsSuccess = false;
                 _responseDto.Message = ex.Message;
             }
+
             return _responseDto;
         }
-        
+
         [HttpDelete]
         [Route("{id:int}")]
         [Authorize(Roles = "ADMIN")]
@@ -111,6 +115,7 @@ namespace Mango.Services.ProductAPI.Controllers
                 _responseDto.IsSuccess = false;
                 _responseDto.Message = ex.Message;
             }
+
             return _responseDto;
         }
     }

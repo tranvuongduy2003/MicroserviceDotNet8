@@ -7,6 +7,7 @@ namespace Mango.Web.Service
     public class CouponService : ICouponService
     {
         private readonly IBaseService _baseService;
+
         public CouponService(IBaseService baseService)
         {
             _baseService = baseService;
@@ -17,8 +18,8 @@ namespace Mango.Web.Service
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = SD.ApiType.POST,
-                Data=couponDto,
-                Url = SD.CouponAPIBase + "/api/Coupon" 
+                Data = couponDto,
+                Url = SD.CouponAPIBase + "/api/Coupon"
             });
         }
 
@@ -28,7 +29,7 @@ namespace Mango.Web.Service
             {
                 ApiType = SD.ApiType.DELETE,
                 Url = SD.CouponAPIBase + "/api/Coupon/" + id
-            }); 
+            });
         }
 
         public async Task<ResponseDto?> GetAllCouponsAsync()
@@ -45,7 +46,7 @@ namespace Mango.Web.Service
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.CouponAPIBase + "/api/Coupon/GetByCode/"+couponCode
+                Url = SD.CouponAPIBase + "/api/Coupon/GetByCode/" + couponCode
             });
         }
 

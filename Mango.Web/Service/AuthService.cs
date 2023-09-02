@@ -7,6 +7,7 @@ namespace Mango.Web.Service
     public class AuthService : IAuthService
     {
         private readonly IBaseService _baseService;
+
         public AuthService(IBaseService baseService)
         {
             _baseService = baseService;

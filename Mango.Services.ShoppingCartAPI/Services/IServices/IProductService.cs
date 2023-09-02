@@ -2,8 +2,8 @@
 
 namespace Mango.Services.ShoppingCartAPI.Services.IServices
 {
-	public interface IProductService
-	{
-		Task<IEnumerable<ProductDto>> GetProducts();
-	}
+    public interface IProductService
+    {
+        Task<IEnumerable<ProductDto>> GetProducts();
+    }
 }

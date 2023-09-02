@@ -7,6 +7,7 @@ namespace Mango.Web.Service
     public class ProductService : IProductService
     {
         private readonly IBaseService _baseService;
+
         public ProductService(IBaseService baseService)
         {
             _baseService = baseService;
@@ -17,8 +18,8 @@ namespace Mango.Web.Service
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = SD.ApiType.POST,
-                Data=productDto,
-                Url = SD.ProductAPIBase + "/api/Product" 
+                Data = productDto,
+                Url = SD.ProductAPIBase + "/api/Product"
             });
         }
 
@@ -28,7 +29,7 @@ namespace Mango.Web.Service
             {
                 ApiType = SD.ApiType.DELETE,
                 Url = SD.ProductAPIBase + "/api/Product/" + id
-            }); 
+            });
         }
 
         public async Task<ResponseDto?> GetAllProductsAsync()
