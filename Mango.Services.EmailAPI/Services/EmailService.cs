@@ -2,6 +2,7 @@
 using Mango.Services.EmailAPI.Data;
 using Mango.Services.EmailAPI.Models;
 using Mango.Services.EmailAPI.Models.Dto;
+using Mango.Services.EmailAPI.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mango.Services.EmailAPI.Services;
@@ -53,5 +54,11 @@ public class EmailService : IEmailService
         {
             return false;
         }
+    }
+    
+    public async Task RegisterUserEmailAndLog(string email)
+    {
+        string message = "User Registration Successfully. <br/> Email: " + email;
+        await LogAndEmail(message, "tranvuongduy2003@gmail.com");
     }
 }
