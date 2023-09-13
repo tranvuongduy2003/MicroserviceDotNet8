@@ -2,12 +2,11 @@
 using Mango.Services.EmailAPI.Data;
 using Mango.Services.EmailAPI.Models;
 using Mango.Services.EmailAPI.Models.Dto;
-using Mango.Services.EmailAPI.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mango.Services.EmailAPI.Services;
 
-public class EmailService: IEmailService
+public class EmailService : IEmailService
 {
     private readonly DbContextOptions<AppDbContext> _dbOptions;
 
@@ -20,19 +19,18 @@ public class EmailService: IEmailService
     {
         StringBuilder message = new StringBuilder();
 
-        message.AppendLine("<br/>Cart Email Requested ");
+        message.AppendLine("<br/>Cart Email Request ");
         message.AppendLine("<br/>Total " + cartDto.CartHeader.CartTotal);
         message.Append("<br/>");
         message.Append("<ul>");
         foreach (var item in cartDto.CartDetails)
         {
             message.Append("<li>");
-            message.Append(item.Product.Name + " x " + item.Count);
+            message.Append(item.Product.Name + " " + item.Count);
             message.Append("</li>");
         }
-
         message.Append("</ul>");
-        
+
         await LogAndEmail(message.ToString(), cartDto.CartHeader.Email);
     }
 
@@ -44,15 +42,14 @@ public class EmailService: IEmailService
             {
                 Email = email,
                 EmailSent = DateTime.Now,
-                Message = message
+                Message = message,
             };
             await using var _db = new AppDbContext(_dbOptions);
-            await _db.EmailLoggers.AddAsync(emailLog);
-            await _db.SaveChangesAsync();
-            
+            _db.EmailLoggers.AddAsync(emailLog);
+            _db.SaveChangesAsync();
             return true;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
             return false;
         }

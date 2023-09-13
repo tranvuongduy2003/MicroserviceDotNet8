@@ -1,7 +1,8 @@
-﻿namespace Mango.Services.EmailAPI.Messaging;
-
-public interface IAzureServiceBusConsumer
+namespace Mango.Services.EmailAPI.Messaging
 {
-    Task Start();
-    Task Stop();
+    public interface IAzureServiceBusConsumer
+    {
+        Task Start();
+        Task Stop();
+    }
 }
