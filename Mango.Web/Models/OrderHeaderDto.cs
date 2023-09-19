@@ -1,6 +1,6 @@
 ﻿using Mango.Web.Models;
 
-namespace Mango.Web.Dto;
+namespace Mango.Web.Models;
 
 public class OrderHeaderDto
 {

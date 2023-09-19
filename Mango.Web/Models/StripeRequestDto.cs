@@ -1,4 +1,4 @@
-﻿using Mango.Web.Dto;
+﻿using Mango.Web.Models;
 
 namespace Mango.Web.Models;
 
